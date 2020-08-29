@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+
+}
+<form method="post">
+    <div class="form-group">
+        <label for="inputDate">Дата платежа:</label>
+        <input type="date" name="PaymentDate" class="form-control">
+        <label for="inputDate">Наименования контрагента:</label>
+        <input type="text" name="SubCustomerName" class="form-control" id="exampleInputEmail1">
+    </div>
+    <button type="submit" class="btn btn-primary">Отфильтровать</button>
+</form>
+@if (Model.customerPayments != null)
+{
+    <div>
+        <table border="1">
+            <tr>
+                <td>CustomerName</td>
+                <td>Sum</td>
+                <td>PaymentDate</td>
+            </tr>
+            @foreach (var item in Model.customerPayments)
+            {
+                <tr>
+                    <td>@item.CustomerName</td>
+                    <td>@item.Sum</td>
+                    <td>@item.dateTime</td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+
+
